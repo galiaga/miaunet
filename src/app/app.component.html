@@ -1,10 +1,14 @@
-<h1>miaunet</h1>
+<header>
+  <ul>
+    <li><a [routerLink]="['/gatos']">Gatos</a></li>
+    <li><a [routerLink]="['/crear-gato']">Añadir gato</a></li>
+    <li><a [routerLink]="['/sobre-miaunet']">Sobre miaunet</a></li>
+    <li><a [routerLink]="['/contacto']">Contacto</a></li>
+  </ul>
+</header>
 
-<ul>
-  <li><a [routerLink]="['/gatos']">Gatos</a></li>
-  <li><a [routerLink]="['/crear-gato']">Añadir gato</a></li>
-  <li><a [routerLink]="['/sobre-miaunet']">Sobre miaunet</a></li>
-  <li><a [routerLink]="['/contacto']">Contacto</a></li>
-</ul>
+<section>
+  <router-outlet></router-outlet>
+</section>
 
-<router-outlet></router-outlet>
+<footer>miaunet 2020</footer>
