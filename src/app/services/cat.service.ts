@@ -14,4 +14,9 @@ export class CatService {
   testService() {
     return 'Probando el servicio de Angular';
   }
+
+  saveCat(cat: Cat) {
+    let params = JSON.stringify(cat);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+  }
 }
