@@ -60,7 +60,12 @@
 
     <p>
       <label for="image">Foto gato</label>
-      <input type="file" name="image" placeholder="Subir imagen" />
+      <input
+        type="file"
+        name="image"
+        placeholder="Subir imagen"
+        (change)="fileChangeEvent($event)"
+      />
     </p>
 
     <input type="submit" value="Añadir" [disabled]="!catForm.form.valid" />
