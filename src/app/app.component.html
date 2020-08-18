@@ -1,13 +1,27 @@
 <header>
   <ul>
-    <li><a [routerLink]="['/gatos']">Gatos</a></li>
-    <li><a [routerLink]="['/crear-gato']">Añadir gato</a></li>
-    <li><a [routerLink]="['/sobre-miaunet']">Sobre miaunet</a></li>
-    <li><a [routerLink]="['/contacto']">Contacto</a></li>
+    <li>
+      <a [routerLink]="['/gatos']" [routerLinkActive]="['actived']">Gatos</a>
+    </li>
+    <li>
+      <a [routerLink]="['/crear-gato']" [routerLinkActive]="['actived']"
+        >Añadir gato</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/sobre-miaunet']" [routerLinkActive]="['actived']"
+        >Sobre miaunet</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/contacto']" [routerLinkActive]="['actived']"
+        >Contacto</a
+      >
+    </li>
   </ul>
 </header>
 
-<section>
+<section id="content">
   <router-outlet></router-outlet>
 </section>
 

@@ -1,1 +1,60 @@
-<p>create works!</p>
+<div class="container">
+  <h2>{{ title }}</h2>
+
+  <form #catForm="ngForm" (ngSubmit)="onSubmit(catForm)">
+    <p>
+      <label for="name">Nombre</label>
+      <input
+        type="text"
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="cat.name"
+        required
+      />
+      <span class="form_error" *ngIf="name.touched && !name.valid"
+        >El nombre es obligatorio.</span
+      >
+    </p>
+
+    <p>
+      <label for="age_years">Años</label>
+      <input
+        type="number"
+        name="age_years"
+        #age_years="ngModel"
+        [(ngModel)]="cat.age_years"
+      />
+    </p>
+
+    <p>
+      <label for="age_months">Meses</label>
+      <input
+        type="number"
+        name="age_months"
+        #age_months="ngModel"
+        [(ngModel)]="cat.age_months"
+      />
+    </p>
+
+    <p>
+      <label for="breed">Raza</label>
+      <input
+        type="text"
+        name="breed"
+        #breed="ngModel"
+        [(ngModel)]="cat.breed"
+        required
+      />
+      <span class="form_error" *ngIf="breed.touched && !breed.valid"
+        >La raza es obligatoria.</span
+      >
+    </p>
+
+    <p>
+      <label for="image">Foto gato</label>
+      <input type="file" name="image" placeholder="Subir imagen" />
+    </p>
+
+    <input type="submit" value="Añadir" [disabled]="!catForm.form.valid" />
+  </form>
+</div>
