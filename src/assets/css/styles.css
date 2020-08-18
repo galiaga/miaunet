@@ -57,6 +57,11 @@ body {
   padding-top: 120px;
 }
 
+.failed {
+  background: red;
+  color: white;
+}
+
 footer {
   width: 75%;
   margin: 0px auto;
@@ -151,6 +156,21 @@ header ul li {
   line-height: 90px;
   font-size: 1.8rem;
   font-weight: 400;
+}
+
+.message {
+  border: 1px solid #eee;
+  padding: 2vh;
+  width: 50%;
+}
+
+.message a {
+  color: white;
+}
+
+.success {
+  background: green;
+  color: white;
 }
 
 #title {

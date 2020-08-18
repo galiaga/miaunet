@@ -11,23 +11,28 @@ import { CatService } from '../../services/cat.service';
 export class CreateComponent implements OnInit {
   public title: string;
   public cat: Cat;
+  public status: string;
 
   constructor(private _catService: CatService) {
     this.title = 'Añadir gato';
     this.cat = new Cat('', '', 0, 0, '', '');
-
-    /*    public _id: string,
-    public name: string,
-    public age_years: number,
-    public age_months: number,
-    public breed: string,
-    public image: string
-    */
   }
 
   ngOnInit(): void {}
 
   onSubmit(form) {
-    console.log(this.cat);
+    this._catService.saveCat(this.cat).subscribe(
+      (response) => {
+        if (response.cat) {
+          this.status = 'success';
+          form.reset();
+        } else {
+          this.status = 'failed';
+        }
+      },
+      (error) => {
+        console.log(<any>error);
+      }
+    );
   }
 }

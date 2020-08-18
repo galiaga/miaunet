@@ -15,8 +15,12 @@ export class CatService {
     return 'Probando el servicio de Angular';
   }
 
-  saveCat(cat: Cat) {
+  saveCat(cat: Cat): Observable<any> {
     let params = JSON.stringify(cat);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.post(this.url + '/save-cat', params, {
+      headers: headers,
+    });
   }
 }

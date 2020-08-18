@@ -1,6 +1,14 @@
 <div class="container">
   <h2>{{ title }}</h2>
 
+  <div class="message success" *ngIf="status == 'success'">
+    Gatito inscrito! Puedes verlo aqui.
+  </div>
+
+  <div class="message failed" *ngIf="status == 'failed'">
+    El gatito no se ha podido añadir...
+  </div>
+
   <form #catForm="ngForm" (ngSubmit)="onSubmit(catForm)">
     <p>
       <label for="name">Nombre</label>
