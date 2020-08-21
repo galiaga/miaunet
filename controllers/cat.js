@@ -3,6 +3,11 @@
 const { Test } = require("tslint");
 
 var Cat = require("../models/cat");
+var fs = require("fs");
+const { fstat } = require("fs");
+const { exists } = require("../models/cat");
+var path = require("path");
+const { RSA_NO_PADDING } = require("constants");
 
 var controller = {
   home: function (req, res) {
@@ -92,6 +97,76 @@ var controller = {
 
       return res.status(200).send({
         cat: catUpdated,
+      });
+    });
+  },
+
+  getCat: function (req, res) {
+    var catId = req.params.id;
+
+    if (catId == null)
+      return res.status(404).send({ message: "El gato no existe." });
+
+    Cat.findById(catId, (err, cat) => {
+      if (err)
+        return res
+          .status(500)
+          .send({ message: "Error al devolver los datos." });
+
+      if (!cat) return res.status(404).send({ message: "El gato no existe." });
+
+      return res.status(200).send({ cat });
+    });
+  },
+
+  // Listar gatos
+  getCats: function (req, res) {
+    Cat.find({}).exec((err, cats) => {
+      if (err)
+        return res
+          .status(500)
+          .send({ message: "Error al devolver los datos." });
+
+      if (!cats)
+        return res.status(404).send({ message: "No hay catos para mostrar." });
+
+      return res.status(200).send({ cats });
+    });
+  },
+
+  // Mostrar imagen
+  getImageFile: function (req, res) {
+    var file = req.params.image;
+    var path_file = "./uploads/" + file;
+
+    fs.exists(path_file, (exists) => {
+      if (exists) {
+        return res.sendFile(path.resolve(path_file));
+      } else {
+        return res.status(200).send({
+          message: "No existe la imagen.",
+        });
+      }
+    });
+  },
+
+  // Borrar elemento
+  deleteCat: function (req, res) {
+    var catId = req.params.id;
+
+    Cat.findByIdAndDelete(catId, (err, catRemoved) => {
+      if (err)
+        return res
+          .status(500)
+          .send({ message: "No se ha podido borrar el elemento." });
+
+      if (!catRemoved)
+        return res
+          .status(404)
+          .send({ message: "No se encuentra el elemento." });
+
+      return res.status(200).send({
+        cat: catRemoved,
       });
     });
   },

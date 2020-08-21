@@ -17,5 +17,9 @@ router.post(
   multipartMiddleware,
   CatController.uploadImage
 );
+router.get("/cat/:id?", CatController.getCat);
+router.get("/cats", CatController.getCats);
+router.get("/get-image/:image", CatController.getImageFile);
+router.delete("/cat/:id", CatController.deleteCat);
 
 module.exports = router;

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "onyx-principle-287016": {
+      "hosting": {
+        "miaunet": [
+          "onyx-principle-287016"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "onyx-principle-287016"
+  }
+}

@@ -1,1 +1,17 @@
-<p>cats works!</p>
+<div class="container">
+  <h2>Gatos</h2>
+
+  <ul>
+    <li *ngFor="let cat of cats" class="cat">
+      <a [routerLink]="['/cat', cat._id]">
+        <div class="images">
+          <img src="{{ url + '/get-image/' + cat.image }}" *ngIf="cat.image" />
+        </div>
+
+        <h3>{{ cat.name }}</h3>
+        <p>Edad: {{ cat.age_years }} años, {{ cat.age_months }} meses.</p>
+        <p>Raza: {{ cat.breed }}</p></a
+      >
+    </li>
+  </ul>
+</div>

@@ -12,6 +12,11 @@ import { CreateComponent } from './components/create/create.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ErrorComponent } from './components/error/error.component';
 import { from } from 'rxjs';
+import { DetailComponent } from './components/detail/detail.component';
+import { EditComponent } from './components/edit/edit.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,8 @@ import { from } from 'rxjs';
     CreateComponent,
     ContactComponent,
     ErrorComponent,
+    DetailComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +35,8 @@ import { from } from 'rxjs';
     routing,
     HttpClientModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent],
